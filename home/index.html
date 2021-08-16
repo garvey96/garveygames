@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-DV1YH1VLRN"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'G-DV1YH1VLRN');
-        </script>
-        
         <title>Home - Garvey Unblocked Games</title>
         <link rel="shortcut icon" href="icon/logo.png"/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,102 +9,327 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+
+        <script>
+            //page views
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "https://api.countapi.xyz/hit/garveygame.com/visits");
+            xhr.responseType = "json";
+            xhr.onload = function() {
+                document.getElementById("views").innerText = this.response.value;
+            }
+            xhr.send();
+
+
+            window.onload = function(){
+                //local page views
+                var time = Math.round(Date.now()/1000);
+                localStorage.setItem("home_views"+Math.floor(time/60), parseInt(localStorage.getItem("home_views"+Math.floor(time/60)))+1 || 1);
+                localStorage.setItem("home_views"+Math.floor(time/3600), parseInt(localStorage.getItem("home_views"+Math.floor(time/3600)))+1 || 1);
+                localStorage.setItem("home_views"+Math.floor(time/86400), parseInt(localStorage.getItem("home_views"+Math.floor(time/86400)))+1 || 1);
+                localStorage.setItem("home_views"+Math.floor(time/2592000), parseInt(localStorage.getItem("home_views"+Math.floor(time/2592000)))+1 || 1);
+                localStorage.setItem("home_views", parseInt(localStorage.getItem("home_views"))+1||1);
+
+                var b = 0
+                for(var i = 0; i <60; i++)
+                {
+                    var c = parseInt(localStorage.getItem("home_views"+(Math.floor(time/60)-i))) || 0;
+                    //alert(c);
+                    b = b + c;
+                }
+                //document.getElementById("hour-views").innerText = b;
+
+
+                var b = 0
+                for(var i = 0; i <60; i++)
+                {
+                    var c = parseInt(localStorage.getItem("game_views"+(Math.floor(time/60)-i))) || 0;
+                    b = b + c;
+                }
+                document.getElementById("hour-views").innerText = b;
+
+                var b = 0
+                for(var i = 0; i <24; i++)
+                {
+                    var c = parseInt(localStorage.getItem("game_views"+(Math.floor(time/3600)-i))) || 0;
+                    b = b + c;
+                }
+                document.getElementById("day-views").innerText = b;
+
+                var b = 0
+                for(var i = 0; i <30; i++)
+                {
+                    var c = parseInt(localStorage.getItem("game_views"+(Math.floor(time/86400)-i))) || 0;
+                    b = b + c;
+                }
+                document.getElementById("month-views").innerText = b;
+                
+                var b = 0
+                for(var i = 0; i <30; i++)
+                {
+                    var c = parseInt(localStorage.getItem("game_views"+(Math.floor(time/2592000)-i))) || 0;
+                    b = b + c;
+                }
+                document.getElementById("year-views").innerText = b;
+
+
+                var c = parseInt(localStorage.getItem("game_views"))||0;
+                document.getElementById("ur-views").innerText = c;
+            };
+            
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "https://api.countapi.xyz/hit/garveygame.com/visits"+Math.round(Date.now()/60000));
+            xhr.responseType = "json";
+            xhr.send();
+            
+            function open_game(game)
+            {
+                var xhrb = new XMLHttpRequest();
+                xhrb.open("GET", "https://api.countapi.xyz/hit/garveygame.com/"+game);
+                xhrb.responseType = "json";
+                xhrb.send();
+
+                var xhrb = new XMLHttpRequest();
+                xhrb.open("GET", "https://api.countapi.xyz/hit/garveygame.com/"+game+Math.round(Date.now()/60000));
+                xhrb.responseType = "json";
+                xhrb.send();
+
+
+                var time = Math.round(Date.now()/1000);
+                localStorage.setItem("game_views"+Math.floor(time/60), parseInt(localStorage.getItem("game_views"+Math.floor(time/60)))+1 || 1);
+                localStorage.setItem("game_views"+Math.floor(time/3600), parseInt(localStorage.getItem("game_views"+Math.floor(time/3600)))+1 || 1);
+                localStorage.setItem("game_views"+Math.floor(time/86400), parseInt(localStorage.getItem("game_views"+Math.floor(time/86400)))+1 || 1);
+                localStorage.setItem("game_views"+Math.floor(time/2592000), parseInt(localStorage.getItem("game_views"+Math.floor(time/2592000)))+1 || 1);
+                localStorage.setItem("game_views", parseInt(localStorage.getItem("game_views"))+1 ||1);
+
+
+
+                var b = 0
+                for(var i = 0; i <60; i++)
+                {
+                    var c = parseInt(localStorage.getItem("game_views"+(Math.floor(time/60)-i))) || 0;
+                    b = b + c;
+                }
+                document.getElementById("hour-views").innerText = b;
+
+                var b = 0
+                for(var i = 0; i <24; i++)
+                {
+                    var c = parseInt(localStorage.getItem("game_views"+(Math.floor(time/3600)-i))) || 0;
+                    b = b + c;
+                }
+                document.getElementById("day-views").innerText = b;
+
+                var b = 0
+                for(var i = 0; i <30; i++)
+                {
+                    var c = parseInt(localStorage.getItem("game_views"+(Math.floor(time/86400)-i))) || 0;
+                    b = b + c;
+                }
+                document.getElementById("month-views").innerText = b;
+                
+                var b = 0
+                for(var i = 0; i <30; i++)
+                {
+                    var c = parseInt(localStorage.getItem("game_views"+(Math.floor(time/2592000)-i))) || 0;
+                    b = b + c;
+                }
+                document.getElementById("year-views").innerText = b;
+
+
+                var c = parseInt(localStorage.getItem("game_views"))||0;
+                document.getElementById("ur-views").innerText = c;
+            }
+
+            function game_views(game)
+            {
+                var xhra = new XMLHttpRequest();
+                xhra.open("GET", "https://api.countapi.xyz/get/garveygame.com/"+game);
+                xhra.responseType = "json";
+                xhra.onload = function() {
+                    document.getElementById(game).innerText = this.response.value;
+                }
+                xhra.send();
+
+                var b = 0
+                for(var i = 0; i <60; i++)
+                {
+                    var c = parseInt(localStorage.getItem("home_views"+(Math.floor(time/60)-i))) || 0;
+                    //alert(c);
+                    b = b + c;
+                }
+                //document.getElementById("hour-views").innerText = b;
+
+
+                
+            }
+            game_views("2048");
+            game_views("flappy-bird");
+            game_views("amogus");
+            game_views("pew-pew-asteroids-clone");
+            game_views("hextris");
+            game_views("mine-sweeper");
+            game_views("tower-game");
+            game_views("space-company");
+            game_views("a-dark-room");
+            game_views("arashi");
+            game_views("alien-invasion");
+            game_views("connect-4");
+            game_views("alges-escapade");
+            game_views("fall-bois");
+            game_views("flappy-2048");
+            game_views("flappy-bird-ai");
+
+            var time = 0;
+            var intervalID = setInterval(update_views, 1000);
+            function update_views() {
+                var xhrc = new XMLHttpRequest();
+                xhrc.open("GET", "https://api.countapi.xyz/get/garveygame.com/visits");
+                xhrc.responseType = "json";
+                xhrc.onload = function() {
+                    var i = document.querySelectorAll('[id=views]')
+                    for(var a = 0; a < i.length; a++)
+                    {
+                        i[a].innerText = this.response.value;
+                    }
+                }
+                xhrc.send();
+
+                //game_views("2048");
+                //game_views("flappy-bird");
+                //game_views("amogus");
+                //game_views("pew-pew-asteroids-clone");
+                //game_views("hextris");
+                //game_views("mine-sweeper");
+                //game_views("tower-game");
+                //game_views("space-company");
+                //game_views("a-dark-room");
+                //game_views("arashi");
+                //game_views("alien-invasion");
+                //game_views("connect-4");
+                //game_views("alges-escapade");
+                //game_views("fall-bois");
+                //game_views("flappy-2048");
+                //game_views("flappy-bird-ai");
+            }
+        </script>
     </head>
     <body>
-        <div class="header">
+        <div class="header" id="headers">
             <img src="icon/logo.png" height="50px" width="50px">
             <a href="../home" class="logo">Garvey Unblocked Games</a>
             <div class="header-right">
                 <a href="../Install">Install</a>
-                <a href="file:///C:/Users/gol0032/Downloads/garveygames-main%20(3)/garveygames-main/terms/index.html">Submit</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSe01zL0A8eYUN0pZxFOJiGpTrsq-iQ1EdhzAkNxs_PSOc-WRw/viewform">Submit</a>
             </div>
         </div>
-
+        <!--add middle click-->
         <div class="body">
             <h1 class="title">Garvey Unblocked Games</h1>
             <h2 style="margin-top: 0;">Free and Open Source</h2>
+            <h2><span id="views"></span> visits and counting...</h2>
             <div class="preview">
-                <a class="snake-preview" href="https://hczhcz.github.io/2048/20ez/">
+                <a class="snake-preview" href="https://hczhcz.github.io/2048/20ez/" onauxclick="open_game('2048')" onclick="open_game('2048')">
                     <img src="icon/2048_preview.png">
+                    <span class="views"><c id="2048" ></c> views</span>
                     <h1>2048</h1>
                     <p>2048</p>
                 </a>
-                <a class="snake-preview" href="https://scratch.mit.edu/projects/embed/17964117/">
+                <a class="snake-preview" href="https://scratch.mit.edu/projects/embed/17964117/"onauxclick="open_game('flapy-bird')" onclick="open_game('flappy-bird')">
                     <img src="icon/flappy_bird_preview.png">
+                    <span class="views"><c id="flappy-bird" ></c> views</span>
                     <h1>Flappy Bird</h1>
                     <p>Flappy Bird clone</p>
                 </a>
-                <a class="snake-preview" href="../amogus/index.html">
+                <a class="snake-preview" href="../amogus/index.html"onauxclick="open_game('amogus')" onclick="open_game('amogus')">
                     <img src="icon/sussy.gif">
+                    <span class="views"><c id="amogus" ></c> views</span>
                     <h1>Amogus</h1>
                     <p>Amogus sussy balls</p>
                 </a>
-                <a class="snake-preview" href="../asteroids clone/index.html">
+                <a class="snake-preview" href="../asteroids clone/index.html"onauxclick="open_game('pew-pew-asteroids-clone')" onclick="open_game('pew-pew-asteroids-clone')">
                     <img src="icon/asteroids_clone_preview.png">
+                    <span class="views"><c id="pew-pew-asteroids-clone" ></c> views</span>
                     <h1>pew pew asteroids clone</h1>
                     <p>pew pew space game</p>
                 </a>
-                <a class="snake-preview" href="../hextris/">
+                <a class="snake-preview" href="../hextris/"onauxclick="open_game('2048')" onclick="open_game('hextris')">
                     <img src="icon/hextris_preview.png">
+                    <span class="views"><c id="hextris" ></c> views</span>
                     <h1>Hextris</h1>
                     <p>I thought this was a tetris clone</p>
                 </a>
-                <a class="snake-preview" href="https://minesweeper.github.io/">
+                <a class="snake-preview" href="https://minesweeper.github.io/"onauxclick="open_game('mine-sweeper')" onclick="open_game('mine-sweeper')">
                     <img src="icon/minesweeper_preview.png">
+                    <span class="views"><c id="mine-sweeper" ></c> views</span>
                     <h1>Mine Sweeper</h1>
                     <p>Dont have windows xp. But want to play windows xp minesweeper. Then play this clone</p>
                 </a>
-                <a class="snake-preview" href="../tower game/index.html">
+                <a class="snake-preview" href="../tower game/index.html"onauxclick="open_game('tower-game')" onclick="open_game('tower-game')">
                     <img src="icon/tower_game_preview.png">
+                    <span class="views"><c id="tower-game" ></c> views</span>
                     <h1>Tower Game 加载中</h1>
                     <p>ching cheng hanji teng chang che do ching zhuang shi na zhuang ga dang chao fuma lang</p>
                 </a>
-                <a class="snake-preview" href="../Space Company/index.html">
+                <a class="snake-preview" href="../Space Company/index.html"onauxclick="open_game('space-company')" onclick="open_game('space-company')">
                     <img src="icon/space_company_preview.png">
+                    <span class="views"><c id="space-company" ></c> views</span>
                     <h1>Space Company</h1>
                     <p>An idle game <br> you do nothing really</p>
                 </a>
-                 <a class="snake-preview" href="http://doublespeakgames.github.io/adarkroom/">
+                 <a class="snake-preview" href="http://doublespeakgames.github.io/adarkroom/"onauxclick="open_game('a-dark-room')" onclick="open_game('a-dark-room')">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/An_example_for_a_nailed_note.jpg">
+                    <span class="views"><c id="a-dark-room" ></c> views</span>
                     <h1>A Dark Room</h1>
                     <p>A minimalist text adventure game for your browser</p>
                 </a>
-                <a class="snake-preview" href="../arashi">
+                <a class="snake-preview" href="../arashi"onauxclick="open_game('arashi')" onclick="open_game('arashi')">
                     <img src="https://thechive.com/wp-content/uploads/2019/12/person-hilariously-photoshops-animals-onto-random-things-xx-photos-25.jpg">
+                    <span class="views"><c id="arashi" ></c> views</span>
                     <h1>Arashi</h1>
                     <p>Arashi is a (work-in-progress) Tempest-clone. ArashiJS is adapted from Project ARASHI for the Apple Macintosh.</p>
                 </a>
-                <a class="snake-preview" href="http://cykod.github.io/AlienInvasion/">
+                <a class="snake-preview" href="http://cykod.github.io/AlienInvasion/"onauxclick="open_game('alien-invasion')" onclick="open_game('alien-invasion')">
                     <img src="https://thechive.com/wp-content/uploads/2019/12/person-hilariously-photoshops-animals-onto-random-things-xx-photos-8.jpg">
-                    <h1>Alien Invastion</h1>
+                    <span class="views"><c id="alien-invasion" ></c> views</span>
+                    <h1>Alien Invasion</h1>
                     <p>A simple Galaga clone</p>
                 </a>
-                <a class="snake-preview" href="https://kenrick95.github.io/c4/">
+                <a class="snake-preview" href="https://kenrick95.github.io/c4/"onauxclick="open_game('connect-4')" onclick="open_game('connect-4')">
                     <img src="icon/connect_4_preview.png">
+                    <span class="views"><c id="connect-4" ></c> views</span>
                     <h1>Connect 4</h1>
                     <p>Get 4 peices in a row to win</p>
                 </a>
-                <a class="snake-preview" href="http://dave-and-mike.github.io/game-off-2012/">
+                <a class="snake-preview" href="http://dave-and-mike.github.io/game-off-2012/"onauxclick="open_game('alges-escapade')" onclick="open_game('alges-escapade')">
                     <img src="https://thechive.com/wp-content/uploads/2019/12/person-hilariously-photoshops-animals-onto-random-things-xx-photos-23.jpg">
-                    <h1>Alge's Escapde</h1>
+                    <span class="views"><c id="alges-escapade" ></c> views</span>
+                    <h1>Alge's Escapade</h1>
                     <p>Do somthing with alge idk I never played it</p>
                 </a>
-                <a class="snake-preview" href="https://grandcanyonshuttles.com/uploads/5/5/6/7/5567194/custom_themes/790846461828095114/fall-boys.html">
+                <a class="snake-preview" href="https://grandcanyonshuttles.com/uploads/5/5/6/7/5567194/custom_themes/790846461828095114/fall-boys.html"onauxclick="open_game('fall-bois')" onclick="open_game('fall-bois')">
                     <img src="icon/fall_bois_preview.png">
+                    <span class="views"><c id="fall-bois" ></c> views</span>
                     <h1>Fall Bois</h1>
                     <p>Fall Bois</p>
                 </a>
-                <a class="snake-preview" href="https://hczhcz.github.io/Another-Flappy-2048/">
+                <a class="snake-preview" href="https://hczhcz.github.io/Another-Flappy-2048/"onauxclick="open_game('flappy-2048')" onclick="open_game('flappy-2048')">
                     <img src="icon/flappy_2048_preview.png">
+                    <span class="views"><c id="flappy-2048" ></c> views</span>
                     <h1>Flappy 2048</h1>
                     <p>flap fap 2048</p>
                 </a>
-                <a class="snake-preview" href="https://hczhcz.github.io/Flappy-2048/">
+                <a class="snake-preview" href="https://xviniette.github.io/FlappyLearning/"onauxclick="open_game('flappy-bird-ai')" onclick="open_game('flappy-bird-ai')">
                     <img src="icon/neuroevolution_flappy_birds_preview.png">
+                    <span class="views"><c id="flappy-bird-ai" ></c> views</span>
                     <h1>Flappy Bird AI</h1>
                     <p>Neuroevolution Flappy Bird AI</p>
                 </a>
             </div>
+            <h2>You have played <span id="hour-views"></span> games this hour. <span id="day-views"></span> games today.<br>
+            <span id="month-views"></span> games in the last month. <span id="year-views"></span> games this year. And <span id="ur-views"></span> total games played.</h2>
+            <h2>Get a life.</h2>
+            <!--<h3><a href="../statistics/">see full statistics</a></h3>-->
         </div>
 
         <div class="footer">
