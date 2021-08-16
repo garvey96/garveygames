@@ -125,6 +125,13 @@ body
   width: 100%
 }
 
+.views
+{
+  color: #606060;
+  float: right;
+  padding-right: 15px
+}
+
 .footer-left
 {
   float: right;
